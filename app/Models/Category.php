@@ -10,6 +10,8 @@ class Category extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $guarded = false;
     public function posts()
     {
         return $this->hasMany(Post::class,foreignKey:'category_id',localKey:'d');
