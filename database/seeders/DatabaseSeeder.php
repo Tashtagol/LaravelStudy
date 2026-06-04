@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,6 +18,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Post::factory()->count (50)->create();
+        Category::factory(20)->create();
+        $tags=Tag::factory(50)->create();
+        $posts=Post::factory(200)->create();
+
+        foreach ($posts as $post) {
+            $tagsId=$tags->random(5)->pluck('id');
+            $post->tags()->attach($tagsId);
+        }
+
+
+
     }
 }

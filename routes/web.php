@@ -22,14 +22,15 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
 });
 
 
-
-
-
-
-
-
 Route::get ('/posts/first_or_create',[\App\Http\Controllers\PostController::class,'firstOrCreate']);
 Route::get ('/posts/update_or_create',[\App\Http\Controllers\PostController::class,'updateOrCreate']);
+
+Route::group(['namespace' => '\App\Http\Controllers\Admin\Post'], function () {
+    Route::prefix('/admin')->group(function () {
+        Route::get('/post', 'IndexController')->name('admin.post.index');
+    });
+});
+
 
 
 Route::get ('/main',[\App\Http\Controllers\MainController::class,'index'])->name('main.index');
