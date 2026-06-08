@@ -7,6 +7,7 @@ use App\Http\Filters\PostFilter;
 use App\Http\Requests\Post\FilterRequest;
 use App\Models\Post;
 use App\Models\Traits\Filterable;
+use App\Policies\UserPolicy;
 
 class IndexController extends BaseController
 {

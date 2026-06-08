@@ -15,6 +15,11 @@
                 <li><a href="{{route('post.index')}}">Posts</a> </li>
                 <li><a href="{{route('about.index')}}">About</a> </li>
                 <li><a href="{{route('contact.index')}}">Contacts</a> </li>
+                <li>
+                    @can('accessAdminPanel', App\Models\User::class)
+                        <a href="{{ route('admin.post.index') }}">Admin</a>
+                    @endcan
+                </li>
             </ul>
         </nav>
     </div>
